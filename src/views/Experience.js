@@ -89,7 +89,7 @@ const Experience = () => {
                         <Grid container spacing={2}>
                         {Object.entries(demographyAndExperience).map(([key, value]) => (
                             <Grid item xs={12} key={key}>
-                                <FormControl fullWidth variant="outlined" sx={{ '& .MuiInputLabel-root': { color: theme.palette.primary.contrastText }, '& .MuiOutlinedInput-root': { color: theme.palette.primary.contrastText, '& fieldset': { borderColor: theme.palette.primary.contrastText }, '&:hover fieldset': { borderColor: 'secondary.main' }, '&.Mui-focused fieldset': { borderColor: 'secondary.main' } } }}>
+                                <FormControl fullWidth variant="outlined" sx={{ '& .MuiInputLabel-root': { color: theme.palette.primary.contrastText }, '& .MuiOutlinedInput-root': { color: theme.palette.primary.contrastText, '& fieldset': { borderColor: theme.palette.primary.contrastText }, '&:hover fieldset': { borderColor: 'primary.main' }, '&.Mui-focused fieldset': { borderColor: 'primary.main' } } }}>
                                     {key === 'address' ? (
                                         <TextField
                                             label="Address"
