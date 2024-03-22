@@ -78,7 +78,7 @@ const CreateProjectScreen = () => {
           sx={{ maxWidth: 500, m: 3, p: 3, background: 'linear-gradient(145deg, #1e1e1e, #383838)', boxShadow: '0px 8px 25px rgba(33, 150, 243, 0.5)' }}
         >
           <CardContent>
-            <Typography variant="h5" sx={{ color: customTheme.palette.secondary.contrastText, textAlign: 'center', mb: 3 }}>
+            <Typography variant="h4" sx={{ color: customTheme.palette.secondary.contrastText, textAlign: 'center', mb: 3 }}>
               Find Consultant
             </Typography>
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Button, TextField, Typography, Box, Grid, FormControl, InputLabel, Select, MenuItem, Slider, Card, CardContent, ThemeProvider, useTheme, createTheme } from '@mui/material';
+import { Button, TextField, Typography, Box, Grid, FormControl, InputLabel, Select, MenuItem, Slider, CardContent, ThemeProvider, useTheme, createTheme } from '@mui/material';
 import { useNavigate, useLocation } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -84,7 +84,7 @@ const Experience = () => {
                     sx={{ maxWidth: 600, m: 3, p: 3, background: 'linear-gradient(145deg, #2a2a2a, #383838)', boxShadow: '0px 8px 25px rgba(33, 150, 243, 0.5)' }}
                 >
                     <CardContent>
-                        <Typography variant="h5" sx={{ color: 'primary.contrastText', textAlign: 'center', mb: 3, textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>Project Experience</Typography>
+                        <Typography variant="h4" sx={{ color: 'primary.contrastText', textAlign: 'center', mb: 3, textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>Project Experience</Typography>
 
                         <Grid container spacing={2}>
                         {Object.entries(demographyAndExperience).map(([key, value]) => (

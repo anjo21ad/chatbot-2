@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Box, Typography, Button, FormControl, InputLabel, Select, MenuItem, Grid, Card, CardContent, ThemeProvider, createTheme } from '@mui/material';
+import { Box, Typography, Button, FormControl, InputLabel, Select, MenuItem, Grid, CardContent, ThemeProvider, createTheme } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -52,23 +52,35 @@ const Skills = () => {
     const [mustHaveSkills, setMustHaveSkills] = useState(Array(3).fill(''));
     const [industryKnowledge, setIndustryKnowledge] = useState(Array(3).fill(''));
 
-    const itSkillsOptions = ["JavaScript", "Python", "Java", "C#", "C++", "PHP"];
+    const itSkillsOptions = [
+        "Adobe Creative Suite", "Agile Methodologies", "Angular", "AR (Augmented Reality)",
+        "AWS", "Azure", "Big Data Technologies", "Blockchain", "CI/CD (Continuous Integration/Continuous Deployment)",
+        "C#", "C++", "Cybersecurity", "Data Analysis", "Data Visualization", "Deep Learning",
+        "DevOps", "Django", "Docker", "Elasticsearch", "Express.js", "Figma", "Flask",
+        "GCP", "GraphQL", "Hadoop", "IoT (Internet of Things)", "Java", "JavaScript",
+        "Kotlin", "Kubernetes", "Machine Learning", "Mobile Development (iOS and Android)",
+        "Node.js", "NoSQL", "PHP", "Prototyping", "Python", "React", "Ruby", "Scrum",
+        "Sketch", "Spark", "Spring Boot", "SQL", "Swift", "TypeScript", "Unity (Game Development)",
+        "Unreal Engine", "UX/UI Design", "Vue.js", "VR (Virtual Reality)", "Web3", "Wireframing"
+      ];      
     const industryKnowledgeOptions = ["Biotech/Medtech", "Construction", "Design and Furniture Industry", "Energy", "IT & Communication", "Agriculture", "Maritime", "Transport", "Logistics", "Financial Sector"];
-    const categoryOptions = ["Cloud Computing", "Business Intelligence", "Salesforce Cloud", "Cyber Security", "Coding", "Software Development", "UI/UX Design", "Data Management"];
+    const categoryOptions = [
+        "Agile Methodologies", "Artificial Intelligence", "Big Data", "Blockchain Technology",
+        "Business Intelligence", "Cloud Computing", "Coding", "Cyber Security", "Data Analysis",
+        "Data Management", "DevOps", "Digital Marketing", "Game Development", "Internet of Things (IoT)",
+        "Machine Learning", "Mobile Development", "Network Security", "Project Management",
+        "Quality Assurance", "Robotics", "Salesforce Cloud", "Software Development", "UI/UX Design",
+        "Virtual Reality/Augmented Reality", "Web Development"
+      ];      
 
-    const handleNext = () => {
-        navigate('/candidate-profile');
-    };
-
-    const handleBack = () => {
-        navigate('/experience');
-    };
+    const handleNext = () => navigate('/candidate-profile');
+    const handleBack = () => navigate('/experience');
 
     const renderSkillSelect = (skills, setSkills, options, label) => (
         <Grid container spacing={2}>
             {skills.map((skill, index) => (
                 <Grid item xs={12} key={index}>
-                    <FormControl fullWidth sx={{ mb: 2, '& .MuiOutlinedInput-root': { '&:hover fieldset': { borderColor: customTheme.palette.secondary.main } } }}>
+                    <FormControl fullWidth sx={{ minWidth: 250, mb: 2 }}> {/* Tilføjet minWidth her */}
                         <InputLabel>{label}</InputLabel>
                         <Select
                             value={skill}
@@ -112,15 +124,14 @@ const Skills = () => {
                 backgroundBlendMode: 'multiply',
                 backgroundColor: 'rgba(0, 0, 0, 0.7)',
             }}>
-                <motion.Card
+                <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
-                    sx={{ maxWidth: 800, width: '90%', m: 3, p: 3, background: 'linear-gradient(145deg, #1e1e1e, #383838)', boxShadow: '0px 8px 25px rgba(33, 150, 243, 0.5)' }}
+                    sx={{ maxWidth: 800, width: '90%', m: 3, p: 3, background: 'linear-gradient(145deg, #1e1e1e, #383838)', boxShadow: '0px 8px 25px rgba(33, 150, 243, 0.5)', borderRadius: '4px' }}
                 >
                     <CardContent>
                         <Typography variant="h4" sx={{ mb: 3, textAlign: 'center', color: customTheme.palette.primary.contrastText }}>Skills Selection</Typography>
-                        
                         <FormControl fullWidth sx={{ mb: 2 }}>
                             <InputLabel>Category</InputLabel>
                             <Select
@@ -134,22 +145,18 @@ const Skills = () => {
                             </Select>
                         </FormControl>
 
-                        <Typography variant="h6" sx={{ mt: 4, mb: 2, color: customTheme.palette.primary.contrastText }}>Must Have Skills</Typography>                
+                        <Typography variant="h6" sx={{ mt: 4, mb: 2, color: customTheme.palette.primary.contrastText }}>Must Have Skills</Typography>
                         {renderSkillSelect(mustHaveSkills, setMustHaveSkills, itSkillsOptions, "Must Have Skill")}
 
                         <Typography variant="h6" sx={{ mt: 4, mb: 2, color: customTheme.palette.primary.contrastText }}>Industry Knowledge</Typography>
                         {renderSkillSelect(industryKnowledge, setIndustryKnowledge, industryKnowledgeOptions, "Industry Knowledge")}
 
                         <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 3 }}>
-                            <Button variant="outlined" startIcon={<ArrowBackIcon />} onClick={handleBack} sx={{ borderColor: customTheme.palette.primary.main, color: customTheme.palette.primary.contrastText }}>
-                            Back
-                            </Button>
-                            <Button variant="contained" endIcon={<ArrowForwardIcon />} onClick={handleNext}>
-                            Next
-                            </Button>
+                            <Button variant="outlined" startIcon={<ArrowBackIcon />} onClick={handleBack} sx={{ borderColor: customTheme.palette.primary.main, color: customTheme.palette.primary.contrastText }}>Back</Button>
+                            <Button variant="contained" endIcon={<ArrowForwardIcon />} onClick={handleNext}>Next</Button>
                         </Box>
                     </CardContent>
-                </motion.Card>
+                </motion.div>
             </Box>
         </ThemeProvider>
     );
