@@ -7,43 +7,43 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import backgroundImage from '../assets/inno.png';
 
 const customTheme = createTheme({
-  palette: {
-    mode: 'dark',
-    primary: {
-      main: '#2196f3',
-    },
-    secondary: {
-      main: '#f50057',
-      contrastText: '#ffffff',
-    },
-    background: {
-      default: '#121212',
-      paper: '#1e1e1e',
-    },
-  },
-  components: {
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          fontSize: '1.2rem',
-          fontWeight: 'bold',
-          letterSpacing: '0.05rem',
-          boxShadow: '0px 4px 15px rgba(245, 0, 87, 0.4)',
-          transition: 'transform 0.2s ease-in-out',
-          '&:hover': {
-            transform: 'scale(1.05)',
-          },
+    palette: {
+        mode: 'dark',
+        primary: {
+            main: '#2196f3',
         },
-        outlined: {
-          borderColor: 'rgba(255, 255, 255, 0.7)',
-          color: '#ffffff',
-          '&:hover': {
-            backgroundColor: 'rgba(255, 255, 255, 0.08)',
-          },
+        secondary: {
+            main: '#f50057',
+            contrastText: '#ffffff',
         },
-      },
+        background: {
+            default: '#121212',
+            paper: '#1e1e1e',
+        },
     },
-  },
+    components: {
+        MuiButton: {
+            styleOverrides: {
+                root: {
+                    fontSize: '1.2rem',
+                    fontWeight: 'bold',
+                    letterSpacing: '0.05rem',
+                    boxShadow: '0px 4px 15px rgba(245, 0, 87, 0.4)',
+                    transition: 'transform 0.2s ease-in-out',
+                    '&:hover': {
+                        transform: 'scale(1.05)',
+                    },
+                },
+                outlined: {
+                    borderColor: 'rgba(255, 255, 255, 0.7)',
+                    color: '#ffffff',
+                    '&:hover': {
+                        backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                    },
+                },
+            },
+        },
+    },
 });
 
 const Skills = () => {
@@ -69,11 +69,15 @@ const Skills = () => {
             {skills.map((skill, index) => (
                 <Grid item xs={12} key={index}>
                     <FormControl fullWidth sx={{ mb: 2, '& .MuiOutlinedInput-root': { '&:hover fieldset': { borderColor: customTheme.palette.secondary.main } } }}>
-                        <InputLabel>Category</InputLabel>
+                        <InputLabel>{label}</InputLabel>
                         <Select
-                            value={category}
-                            label="Category"
-                            onChange={(e) => setCategory(e.target.value)}
+                            value={skill}
+                            label={label}
+                            onChange={(e) => {
+                                const newSkills = [...skills];
+                                newSkills[index] = e.target.value;
+                                setSkills(newSkills);
+                            }}
                             MenuProps={{
                                 PaperProps: {
                                     sx: {
@@ -85,12 +89,11 @@ const Skills = () => {
                                 },
                             }}
                         >
-                            {categoryOptions.map((option, idx) => (
+                            {options.map((option, idx) => (
                                 <MenuItem key={idx} value={option}>{option}</MenuItem>
                             ))}
                         </Select>
                     </FormControl>
-
                 </Grid>
             ))}
         </Grid>
@@ -130,6 +133,7 @@ const Skills = () => {
                                 ))}
                             </Select>
                         </FormControl>
+
                         <Typography variant="h6" sx={{ mt: 4, mb: 2, color: customTheme.palette.primary.contrastText }}>Must Have Skills</Typography>                
                         {renderSkillSelect(mustHaveSkills, setMustHaveSkills, itSkillsOptions, "Must Have Skill")}
 

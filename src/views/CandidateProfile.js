@@ -112,7 +112,7 @@ const CandidateProfile = () => {
         }}
       >
         <Paper elevation={6} sx={{ p: 4, maxWidth: '600px', width: '90%', borderRadius: '15px', backdropFilter: 'blur(10px)', backgroundColor: 'rgba(30, 30, 30, 0.8)' }}>
-          <Typography variant="h4" sx={{ color: customTheme.palette.secondary.contrastText, textAlign: 'center', mb: 4, fontWeight: 'bold' }}>
+          <Typography variant="h4" sx={{ color: customTheme.palette.secondary.contrastText, textAlign: 'center', mb: 4 }}>
             Candidate Profile
           </Typography>
 
