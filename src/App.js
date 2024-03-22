@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
+import Home from './views/Home';
 import CreateProject from './views/CreateProject';
 import Experience from './views/Experience';
 import Skills from './views/Skills';
@@ -17,7 +18,8 @@ function App() {
         <Header />
         <main>
           <Routes>
-            <Route path="/" element={<CreateProject />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/create-project" element={<CreateProject />} />
             <Route path="/experience" element={<Experience />} />
             <Route path="/skills" element={<Skills />} />
             <Route path="/candidate-profile" element={<CandidateProfile />} />
