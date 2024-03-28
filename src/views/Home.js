@@ -2,23 +2,18 @@ import React from 'react';
 import { Box, Typography, Button, Card, CardContent, CardActions, Grid, ThemeProvider, createTheme } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import FindInPageIcon from '@mui/icons-material/FindInPage';
-import ViewListIcon from '@mui/icons-material/ViewList';
-import PeopleIcon from '@mui/icons-material/People';
-import InfoIcon from '@mui/icons-material/Info';
-import ContactMailIcon from '@mui/icons-material/ContactMail';
-import InsightsIcon from '@mui/icons-material/Insights';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import backgroundImage from '../assets/inno.png';
+import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet'; // Icon for salary details
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn'; // Icon for bonuses
+import AssessmentIcon from '@mui/icons-material/Assessment'; // Icon for salary review
 
 const customTheme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#2196f3',
+      main: '#00e676', // Green color for primary
     },
     secondary: {
-      main: '#f50057',
+      main: '#76ff03', // Lighter green color for secondary
       contrastText: '#ffffff',
     },
     background: {
@@ -33,7 +28,6 @@ const customTheme = createTheme({
           fontSize: '1.2rem',
           fontWeight: 'bold',
           letterSpacing: '0.05rem',
-          boxShadow: '0px 4px 15px rgba(245, 0, 87, 0.4)',
           transition: 'transform 0.2s ease-in-out',
           '&:hover': {
             transform: 'scale(1.05)',
@@ -45,7 +39,7 @@ const customTheme = createTheme({
       styleOverrides: {
         root: {
           backdropFilter: 'blur(10px)',
-          boxShadow: '0px 8px 25px rgba(33, 150, 243, 0.5)',
+          boxShadow: '0px 8px 25px rgba(0, 230, 118, 0.5)', // Green shadow
           transition: 'transform 0.2s ease-in-out',
           '&:hover': {
             transform: 'scale(1.02)',
@@ -59,83 +53,44 @@ const customTheme = createTheme({
 const Home = () => {
   const navigate = useNavigate();
 
-  const actions = [
-    { title: 'Find Consultant', icon: <FindInPageIcon />, path: '/create-project' },
-    { title: 'View Projects', icon: <ViewListIcon />, path: '/projects' },
-    { title: 'Consultant Profiles', icon: <PeopleIcon />, path: '/consultants' },
-    { title: 'About Us', icon: <InfoIcon />, path: '/about' },
-    { title: 'Contact Us', icon: <ContactMailIcon />, path: '/contact' },
-    { title: 'Analytics', icon: <InsightsIcon />, path: '/analytics' },
+  const salaryActions = [
+    { title: 'Overenskomst for lærere', icon: <AccountBalanceWalletIcon />, path: '/overenskomst-for-lærere' },
+    { title: 'Bonusordninger', icon: <MonetizationOnIcon />, path: '/bonuses' },
+    { title: 'Lønreview', icon: <AssessmentIcon />, path: '/salary-review' },
   ];
 
   return (
     <ThemeProvider theme={customTheme}>
       <Box
         sx={{
-          backgroundImage: `url(${backgroundImage})`,
           height: '100vh',
-          backgroundSize: 'cover',
           padding: 4,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundBlendMode: 'multiply',
-          backgroundColor: 'rgba(0, 0, 0, 0.7)',
+          backgroundColor: '#121212', // Dark grey background color
         }}
       >
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5 }}
+        <Typography
+          variant="h3"
+          gutterBottom
+          sx={{
+            color: '#ffffff', // White text color
+            textAlign: 'center',
+            fontWeight: 'bold',
+            mb: 3,
+            textShadow: '0 0 8px #00e676', // Neon green text shadow for the glow effect
+          }}
         >
-          <Typography
-            variant="h3"
-            gutterBottom
-            sx={{
-              color: 'primary.contrastText',
-              textAlign: 'center',
-              fontWeight: 'bold',
-              mb: 3,
-              textShadow: '2px 2px 8px rgba(33, 150, 243, 0.7)',
-            }}
-          >
-            Welcome to SpitzenKlasse
-          </Typography>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.5, duration: 0.5 }}
-        >
-          <Typography
-            variant="h5"
-            sx={{
-              color: 'primary.contrastText',
-              textAlign: 'center',
-              mb: 4,
-              textShadow: '1px 1px 4px rgba(33, 150, 243, 0.5)',
-            }}
-          >
-            Connecting businesses with top IT consultants
-          </Typography>
-        </motion.div>
+          Payroll Bot
+        </Typography>
 
         <Grid container spacing={4} justifyContent="center">
-          {actions.map((action, index) => (
+          {salaryActions.map((action, index) => (
             <Grid item xs={12} sm={6} md={4} key={index}>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Card
-                  sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    height: '100%',
-                    background: 'linear-gradient(145deg, #2a2a2a, #383838)',
-                    color: 'primary.contrastText',
-                  }}
-                >
+                <Card>
                   <CardContent>
                     <Typography variant="h5" component="div" sx={{ mb: 1.5, display: 'flex', alignItems: 'center', gap: 1 }}>
                       {action.icon}
@@ -148,7 +103,6 @@ const Home = () => {
                       variant="contained"
                       color="secondary"
                       onClick={() => navigate(action.path)}
-                      endIcon={<ArrowForwardIosIcon />}
                       sx={{
                         transition: 'transform 0.2s ease-in-out',
                         '&:hover': {
@@ -156,7 +110,7 @@ const Home = () => {
                         },
                       }}
                     >
-                      Explore
+                      Udforsk
                     </Button>
                   </CardActions>
                 </Card>
