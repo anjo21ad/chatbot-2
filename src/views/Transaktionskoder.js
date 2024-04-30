@@ -1,10 +1,10 @@
-// Overenskomst.js
+// Transaktionskoder.js
 import React from 'react';
 import { Box, Button, Typography, ThemeProvider } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack'; 
-import customTheme from '../config/theme';  // Adjust the path as necessary
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import customTheme from '../config/theme'; 
 
-const Overenskomst = () => (
+const Transaktionskoder = () => (
   <ThemeProvider theme={customTheme}>
     <Box
       sx={{
@@ -29,7 +29,7 @@ const Overenskomst = () => (
           textShadow: '0 0 8px #00e676',
         }}
       >
-        Overenskomst for lærere
+        Transaktionskoder
       </Typography>
 
       <Button
@@ -76,4 +76,4 @@ const Overenskomst = () => (
   </ThemeProvider>
 );
 
-export default Overenskomst;
+export default Transaktionskoder;

@@ -1,59 +1,49 @@
+// Header.js
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, useMediaQuery, ThemeProvider } from '@mui/material';
-import testLogo from '../assets/testLogo.png'; // Husk at opdatere stien til logoet efter behov
-import { createTheme } from '@mui/material/styles';
-
-// Brug customTheme fra dit home view
-const customTheme = createTheme({
-  palette: {
-    mode: 'dark',
-    primary: {
-      main: '#2196f3',
-    },
-    secondary: {
-      main: '#f50057',
-      contrastText: '#ffffff',
-    },
-    background: {
-      default: '#121212',
-      paper: '#1e1e1e',
-    },
-  },
-});
+import { Box, Button, useMediaQuery, ThemeProvider } from '@mui/material';
+import testLogo from '../assets/testLogo.png';
+import customTheme from '../config/theme';
 
 function Header() {
   const navigate = useNavigate();
-  const matches = useMediaQuery('(min-width:600px)');
-
-  const navigateHome = () => {
-    navigate('/');
-  };
+  const matches = useMediaQuery(customTheme.breakpoints.up('sm'));
 
   return (
     <ThemeProvider theme={customTheme}>
       <Box sx={{
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'start',
-        padding: matches ? '15px 30px' : '10px 20px',
+        justifyContent: 'space-between',
+        padding: matches ? '10px 40px' : '5px 10px',
         background: customTheme.palette.background.paper,
-        boxShadow: '0 3px 5px 2px rgba(0, 0, 0, .3)',
+        boxShadow: '0 2px 3px 1px rgba(0, 0, 0, .3)',
       }}>
-        <Box onClick={navigateHome} sx={{
-          cursor: 'pointer', 
-          display: 'flex', 
+        <Box role="button" onClick={() => navigate('/')} sx={{
+          cursor: 'pointer',
+          display: 'flex',
           alignItems: 'center',
-          '&:hover img': { // Tilføj hover-effekt på logoet for at forbedre interaktiviteten
-            boxShadow: '0 0 20px 5px rgba(0, 255, 0, 0.7)', // Mere subtil og tiltalende grøn neon effekt
+          '&:hover img': {
+            boxShadow: '0 0 15px 3px rgba(255, 255, 255, 0.7)',
             transition: 'box-shadow 0.3s ease-in-out',
           },
         }}>
-          <img src={testLogo} alt="Logo" style={{ 
-            height: matches ? '60px' : '50px', 
-            marginRight: '15px',
-          }} />
+          <img src={testLogo} alt="Logo" style={{ height: '45px' }} />
         </Box>
+        <Button 
+          onClick={() => navigate('/videnbase')}
+          variant="contained"
+          color="secondary"
+          sx={{
+            textTransform: 'none',
+            transition: 'transform 0.2s ease-in-out',
+            '&:hover': {
+              transform: 'scale(1.1)',
+            },
+          }}
+        >
+          Videnbase
+        </Button>
       </Box>
     </ThemeProvider>
   );
