@@ -61,7 +61,7 @@ const Transaktionskoder = () => (
         }}
       >
         <iframe
-          src="https://www.stack-ai.com/internal_ui/fcdd1b2e-ae82-4686-99e8-81fc3f378d06/6ae16ee7-a6f2-49ff-bf15-a68cecde4035/6601a2762c69a90219979dd1"
+          src="https://www.stack-ai.com/internal_ui/fcdd1b2e-ae82-4686-99e8-81fc3f378d06/6ae16ee7-a6f2-49ff-bf15-a68cecde4035/6631e01f3cb7d8e64c25cf4e"
           frameBorder="0"
           title="Chatbot"
           width="100%"
